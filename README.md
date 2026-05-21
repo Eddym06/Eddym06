@@ -1,6 +1,10 @@
-<!-- Header Animation -->
+<!-- Header -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:3b82f6,100:1d4ed8&height=200&section=header&text=Eddy%20Manuel%20Piantini%20Martínez&fontSize=36&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Software%20Developer%20%7C%20AI%20Specialist%20%7C%20Full-Stack%20Engineer&descSize=16&descAlignY=55" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=shark&color=gradient&customColorList=12,18,24,30&height=160&section=header&text=Eddy%20Manuel%20Piantini&fontSize=44&fontColor=ffffff&animation=fadeIn&fontAlignY=45" width="100%" />
+</div>
+
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=21&duration=3000&pause=900&color=3B82F6&center=true&vCenter=true&width=650&lines=Software+Developer;AI+%26+Automation+Specialist;Full-Stack+Engineer;Building+intelligent+systems+%F0%9F%9A%80" alt="Typing SVG" />
 </div>
 
 <br/>
@@ -180,7 +184,7 @@ I'm always open to collaborating on innovative projects, AI research, or automat
 ---
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1d4ed8,100:3b82f6&height=120&section=footer&fontSize=12" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=soft&color=gradient&customColorList=12,18,24,30&height=100&section=footer" width="100%" />
 </div>
 
 <!--
