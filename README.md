@@ -1,10 +1,10 @@
 <!-- Header -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0d1117,40:0f2744,100:0d1117&height=150&section=header&text=Eddy%20Manuel%20Piantini&fontSize=46&fontColor=ffffff&animation=fadeIn&fontAlignY=55" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0d1117,40:0f2744,100:0d1117&height=150&section=header&text=Eddy%20Manuel%20Piantini%20Mart%C3%ADnez&fontSize=38&fontColor=ffffff&animation=fadeIn&fontAlignY=55" width="100%" />
 </div>
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=21&duration=3000&pause=900&color=60A5FA&center=true&vCenter=true&width=680&lines=Software+Developer;AI+%26+Automation+Specialist;Full-Stack+Engineer;Building+intelligent+systems+%F0%9F%9A%80" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=2800&pause=700&color=38BDF8&center=true&vCenter=true&width=720&lines=_+Software+Developer;_+AI+%26+Automation+Specialist;_+Full-Stack+Engineer;_+Building+intelligent+systems+%F0%9F%9A%80" alt="Typing SVG" />
 </div>
 
 <br/>
