@@ -142,12 +142,13 @@ A few things I've been turning from ideas into code. **Click a card to explore.*
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/github-stats-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="./assets/github-stats-light.svg" />
-    <img src="./assets/github-stats-dark.svg" width="48%" alt="Current public repository, original project, star and account age totals." />
+    <img src="./assets/github-stats-dark.svg" width="100%" alt="Current public repository, original project, star and account age totals." />
   </picture>
+  <br /><br />
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/github-languages-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="./assets/github-languages-light.svg" />
-    <img src="./assets/github-languages-dark.svg" width="48%" alt="Primary languages across public, non-fork repositories." />
+    <img src="./assets/github-languages-dark.svg" width="100%" alt="Primary languages across public, non-fork repositories." />
   </picture>
   <br />
   <sub>Public GitHub profile and repository data · refreshed daily by GitHub Actions · contribution activity reflects what GitHub shows publicly</sub>
