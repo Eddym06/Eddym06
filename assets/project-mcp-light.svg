@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200" role="img" aria-labelledby="title">
+<title id="title">Chrome DevTools Advanced MCP: AI meets the browser.</title>
+<defs>
+  <linearGradient id="accent"><stop stop-color="#007f83"/><stop offset=".5" stop-color="#7046d5"/><stop offset="1" stop-color="#a84b08"/></linearGradient>
+  <radialGradient id="aura"><stop stop-color="#7046d5" stop-opacity=".2"/><stop offset="1" stop-color="#f5f4ff" stop-opacity="0"/></radialGradient>
+  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#d7d9ed" stroke-width=".7"/></pattern>
+</defs>
+<style>
+text{font-family:Segoe UI,Arial,sans-serif} .mono{font-family:Consolas,monospace;letter-spacing:1.5px}
+.orbit{transform-origin:920px 206px;animation:orbit 28s linear infinite}
+.counter{transform-origin:920px 206px;animation:orbit 40s linear reverse infinite}
+.stream{stroke-dasharray:7 15;animation:stream 8s linear infinite}
+.breathe{animation:breathe 4s ease-in-out infinite}.cursor{animation:blink 1.2s steps(2,end) infinite}
+.rise{animation:rise 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes orbit{to{transform:rotate(360deg)}}@keyframes stream{to{stroke-dashoffset:-220}}
+@keyframes breathe{50%{opacity:.3}}@keyframes blink{50%{opacity:0}}@keyframes rise{50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.orbit,.counter,.stream,.breathe,.cursor,.rise{animation:none}}
+</style>
+<rect x="1" y="1" width="638" height="198" rx="16" fill="#ffffff" stroke="#d7d9ed"/><rect x="1" y="27" width="3" height="58" rx="1" fill="#007f83"/><text x="25" y="34" class="mono" font-size="10" fill="#007f83">01 / DEVELOPER TOOLS</text><text x="25" y="88" font-size="27" font-weight="700" letter-spacing="-.7" fill="#191b38">AI meets the browser.</text><text x="25" y="117" font-size="14" fill="#535e7b">Chrome DevTools Advanced MCP</text><path d="M25 151H615" stroke="#d7d9ed"/><text x="25" y="177" class="mono" font-size="10" fill="#007f83">EXPLORE THE REPOSITORY</text><text x="613" y="179" text-anchor="end" font-size="21" fill="#007f83">↗</text><rect x="440" y="38" width="128" height="88" rx="10" fill="#ffffff" stroke="#007f83"/><path d="M440 58H568" stroke="#d7d9ed"/><circle cx="451" cy="48" r="2" fill="#007f83"/><circle cx="460" cy="48" r="2" fill="#7046d5"/><circle cx="469" cy="48" r="2" fill="#a84b08"/><text x="504" y="97" text-anchor="middle" font-size="30" fill="#007f83">&lt;/&gt;</text><path class="stream" d="M406 92H440M568 92H602" stroke="#007f83" stroke-width="2"/><circle cx="406" cy="92" r="5" fill="#007f83"/><circle cx="602" cy="92" r="5" fill="#007f83"/>
+</svg>

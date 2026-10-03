@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-labelledby="title">
+<title id="title">Eddy Manuel Piantini Martínez — AI, automation and systems. Animated digital laboratory. 2026.</title>
+<defs>
+  <linearGradient id="accent"><stop stop-color="#55e6df"/><stop offset=".5" stop-color="#b59aff"/><stop offset="1" stop-color="#ffba76"/></linearGradient>
+  <radialGradient id="aura"><stop stop-color="#b59aff" stop-opacity=".2"/><stop offset="1" stop-color="#090c16" stop-opacity="0"/></radialGradient>
+  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#26334a" stroke-width=".7"/></pattern>
+</defs>
+<style>
+text{font-family:Segoe UI,Arial,sans-serif} .mono{font-family:Consolas,monospace;letter-spacing:1.5px}
+.orbit{transform-origin:920px 206px;animation:orbit 28s linear infinite}
+.counter{transform-origin:920px 206px;animation:orbit 40s linear reverse infinite}
+.stream{stroke-dasharray:7 15;animation:stream 8s linear infinite}
+.breathe{animation:breathe 4s ease-in-out infinite}.cursor{animation:blink 1.2s steps(2,end) infinite}
+.rise{animation:rise 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes orbit{to{transform:rotate(360deg)}}@keyframes stream{to{stroke-dashoffset:-220}}
+@keyframes breathe{50%{opacity:.3}}@keyframes blink{50%{opacity:0}}@keyframes rise{50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.orbit,.counter,.stream,.breathe,.cursor,.rise{animation:none}}
+</style>
+
+<rect x="1" y="1" width="1198" height="458" rx="22" fill="#090c16" stroke="#26334a"/>
+<rect x="730" y="20" width="449" height="365" fill="url(#grid)" opacity=".55"/>
+<ellipse cx="915" cy="208" rx="267" ry="219" fill="url(#aura)"/>
+<path d="M24 1H1176" stroke="url(#accent)" stroke-width="3"/>
+<g class="mono" font-size="12" fill="#a8b5ce"><text x="40" y="42">~/eddym06</text><text x="984" y="42">EDITION / 2026</text></g>
+<path d="M40 67H1160" stroke="#26334a"/>
+<rect x="40" y="99" width="218" height="28" rx="14" fill="#101727" stroke="#26334a"/>
+<circle class="breathe" cx="57" cy="113" r="4" fill="#55e6df"/>
+<text x="70" y="117" class="mono" font-size="11" fill="#55e6df">IDEAS INTO SYSTEMS</text>
+<text x="36" y="201" font-size="71" font-weight="800" letter-spacing="-3" fill="#f5f7ff">Eddy Manuel<tspan fill="#55e6df">.</tspan></text>
+<text x="40" y="248" font-size="32" font-weight="500" letter-spacing="-.5" fill="#a8b5ce">Piantini Martínez</text>
+<text x="41" y="294" font-size="20" fill="#f5f7ff">Software developer. Curious by design.</text>
+<g class="mono" font-size="12">
+ <text x="42" y="339" fill="#55e6df">01 / AI</text><text x="171" y="339" fill="#b59aff">02 / AUTOMATION</text><text x="388" y="339" fill="#ffba76">03 / SYSTEMS</text>
+</g>
+<g fill="none" stroke="#26334a"><circle cx="920" cy="206" r="139"/><circle cx="920" cy="206" r="110"/><path d="M760 206H1080M920 46V366" stroke-dasharray="2 8"/></g>
+<g class="orbit" fill="none"><ellipse cx="920" cy="206" rx="145" ry="66" stroke="#55e6df" stroke-width="1.5"/><circle cx="1065" cy="206" r="6" fill="#55e6df" stroke="#090c16" stroke-width="3"/></g>
+<g class="counter" fill="none"><ellipse cx="920" cy="206" rx="74" ry="149" stroke="#b59aff" stroke-width="1.5"/><circle cx="920" cy="57" r="6" fill="#b59aff" stroke="#090c16" stroke-width="3"/></g>
+<circle class="stream" cx="920" cy="206" r="164" fill="none" stroke="#ffba76" stroke-width="1" opacity=".6"/>
+<rect x="864" y="150" width="112" height="112" rx="30" fill="#101727" stroke="#26334a"/>
+<text x="920" y="218" text-anchor="middle" font-size="37" font-weight="700" fill="#f5f7ff">&lt;/&gt;</text>
+<g class="mono" font-size="10" fill="#a8b5ce"><text x="1033" y="110">EXPLORE</text><text x="766" y="319">BUILD</text></g>
+<rect x="20" y="382" width="1160" height="58" rx="12" fill="#101727" stroke="#26334a"/>
+<text x="40" y="417" font-family="Consolas,monospace" font-size="14" fill="#a8b5ce"><tspan fill="#55e6df">❯</tspan> const mindset = [<tspan fill="#55e6df">'build'</tspan>, <tspan fill="#b59aff">'experiment'</tspan>, <tspan fill="#ffba76">'improve'</tspan>];</text>
+<rect class="cursor" x="606" y="403" width="8" height="17" fill="#55e6df"/>
+<text x="1128" y="417" text-anchor="end" class="mono" font-size="10" fill="#a8b5ce">SANTO DOMINGO · DO</text>
+</svg>

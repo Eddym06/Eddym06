@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="190" viewBox="0 0 1200 190" role="img" aria-labelledby="title">
+<title id="title">Five completed freeCodeCamp Python certification projects: Configuration Manager, Budget App, Polygon Area Calculator, Hash Table and Tower of Hanoi.</title>
+<defs>
+  <linearGradient id="accent"><stop stop-color="#55e6df"/><stop offset=".5" stop-color="#b59aff"/><stop offset="1" stop-color="#ffba76"/></linearGradient>
+  <radialGradient id="aura"><stop stop-color="#b59aff" stop-opacity=".2"/><stop offset="1" stop-color="#090c16" stop-opacity="0"/></radialGradient>
+  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#26334a" stroke-width=".7"/></pattern>
+</defs>
+<style>
+text{font-family:Segoe UI,Arial,sans-serif} .mono{font-family:Consolas,monospace;letter-spacing:1.5px}
+.orbit{transform-origin:920px 206px;animation:orbit 28s linear infinite}
+.counter{transform-origin:920px 206px;animation:orbit 40s linear reverse infinite}
+.stream{stroke-dasharray:7 15;animation:stream 8s linear infinite}
+.breathe{animation:breathe 4s ease-in-out infinite}.cursor{animation:blink 1.2s steps(2,end) infinite}
+.rise{animation:rise 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes orbit{to{transform:rotate(360deg)}}@keyframes stream{to{stroke-dashoffset:-220}}
+@keyframes breathe{50%{opacity:.3}}@keyframes blink{50%{opacity:0}}@keyframes rise{50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.orbit,.counter,.stream,.breathe,.cursor,.rise{animation:none}}
+</style>
+<rect x="1" y="1" width="1198" height="188" rx="16" fill="#101727" stroke="#26334a"/><text x="28" y="36" class="mono" font-size="12" fill="#55e6df">freeCodeCamp / PYTHON CERTIFICATION</text><text x="1172" y="36" text-anchor="end" class="mono" font-size="11" fill="#a8b5ce">5 PROJECTS · ONE MILESTONE</text><path class="stream" d="M72 81H1102" stroke="url(#accent)" fill="none" stroke-width="2"/><rect x="28" y="65" width="213" height="99" rx="12" fill="#090c16" stroke="#26334a"/><text x="43" y="88" class="mono" font-size="10" fill="#55e6df">01 / COMPLETED</text><text x="43" y="118" font-size="17" font-weight="600" fill="#f5f7ff">Config manager</text><text x="43" y="145" class="mono" font-size="9" fill="#a8b5ce">PARSING</text><rect x="261" y="65" width="213" height="99" rx="12" fill="#090c16" stroke="#26334a"/><text x="276" y="88" class="mono" font-size="10" fill="#55e6df">02 / COMPLETED</text><text x="276" y="118" font-size="17" font-weight="600" fill="#f5f7ff">Budget app</text><text x="276" y="145" class="mono" font-size="9" fill="#a8b5ce">OOP + FORMATTING</text><rect x="494" y="65" width="213" height="99" rx="12" fill="#090c16" stroke="#26334a"/><text x="509" y="88" class="mono" font-size="10" fill="#55e6df">03 / COMPLETED</text><text x="509" y="118" font-size="17" font-weight="600" fill="#f5f7ff">Polygon calculator</text><text x="509" y="145" class="mono" font-size="9" fill="#a8b5ce">CLASSES + GEOMETRY</text><rect x="727" y="65" width="213" height="99" rx="12" fill="#090c16" stroke="#26334a"/><text x="742" y="88" class="mono" font-size="10" fill="#55e6df">04 / COMPLETED</text><text x="742" y="118" font-size="17" font-weight="600" fill="#f5f7ff">Hash table</text><text x="742" y="145" class="mono" font-size="9" fill="#a8b5ce">DATA STRUCTURES</text><rect x="960" y="65" width="213" height="99" rx="12" fill="#090c16" stroke="#26334a"/><text x="975" y="88" class="mono" font-size="10" fill="#55e6df">05 / COMPLETED</text><text x="975" y="118" font-size="17" font-weight="600" fill="#f5f7ff">Tower of Hanoi</text><text x="975" y="145" class="mono" font-size="9" fill="#a8b5ce">RECURSION</text>
+</svg>
