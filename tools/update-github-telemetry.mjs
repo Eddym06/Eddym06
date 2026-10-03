@@ -1,5 +1,5 @@
 /** Refresh the public GitHub telemetry SVGs from GitHub's own pages and API. */
-import { mkdir, writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 
 const owner = 'Eddym06';
 const token = process.env.GITHUB_TOKEN;
@@ -64,29 +64,50 @@ const themes = {
 const esc = text => String(text).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const save = async (name, content) => writeFile(`assets/github-${name}.svg`, content + '\n');
 
+const languageStyles = {
+  Python: { file: 'python', color: '#3776AB' },
+  JavaScript: { file: 'javascript', color: '#F7DF1E' },
+  TypeScript: { file: 'typescript', color: '#3178C6' },
+  C: { file: 'c', color: '#659AD2' },
+  HTML: { file: 'html5', color: '#E34F26' },
+  Swift: { file: 'swift', color: '#F05138' },
+};
+for (const style of Object.values(languageStyles)) {
+  const source = await readFile(new URL(`../assets/language-icons/${style.file}.svg`, import.meta.url), 'utf8');
+  style.viewBox = source.match(/viewBox="([^"]+)"/)?.[1] ?? '0 0 128 128';
+  style.art = source.replace(/^[\s\S]*?<svg\b[^>]*>/, '').replace(/<\/svg>\s*$/, '');
+}
+
 for (const [theme, c] of Object.entries(themes)) {
   const cellsSvg = [...days.values()].sort((a, b) => a.week - b.week || a.weekday - b.weekday)
-    .map(day => `<rect x="${48 + day.week * 14}" y="${78 + day.weekday * 14}" width="10" height="10" rx="3" fill="${c.levels[day.level]}" stroke="${c.bg}" stroke-width="1"><title>${esc(day.date)} · ${day.count} contributions</title></rect>`)
+    .map(day => `<rect x="${48 + day.week * 14}" y="${106 + day.weekday * 14}" width="10" height="10" rx="3" fill="${c.levels[day.level]}" stroke="${c.bg}" stroke-width="1"><title>${esc(day.date)} · ${day.count} contributions</title></rect>`)
     .join('');
-  const activity = `<svg xmlns="http://www.w3.org/2000/svg" width="860" height="216" viewBox="0 0 860 216" role="img" aria-labelledby="title desc"><title id="title">GitHub contribution activity for ${owner}</title><desc id="desc">${contributions} contributions in the last year. Source: GitHub, refreshed ${updated} UTC.</desc><rect x="1" y="1" width="858" height="214" rx="16" fill="${c.bg}" stroke="${c.line}"/><text x="30" y="38" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="${c.text}">Contribution activity</text><text x="830" y="38" text-anchor="end" font-family="Consolas,monospace" font-size="11" fill="${c.muted}">SOURCE: GITHUB · ${updated} UTC</text><text x="30" y="67" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="${c.cyan}">${contributions.toLocaleString('en-US')} contributions in the last year</text>${cellsSvg}<g font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="${c.muted}"><text x="792" y="180">Less</text>${c.levels.map((fill, i) => `<rect x="820" y="170" width="9" height="9" rx="2" fill="${fill}"/><rect x="${820 - (4 - i) * 13}" y="170" width="9" height="9" rx="2" fill="${fill}"/>`).join('')}<text x="830" y="198" text-anchor="end">More</text></g></svg>`;
+  const monthLabels = [...days.values()].filter(day => day.date.endsWith('-01')).map(day => `<text x="${48 + day.week * 14}" y="92">${new Date(day.date + 'T12:00:00Z').toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })}</text>`).join('');
+  const legend = `<g font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="${c.muted}"><text x="642" y="242" text-anchor="end">Less</text>${c.levels.map((fill, i) => `<rect x="${656 + i * 17}" y="230" width="12" height="12" rx="3" fill="${fill}"/>`).join('')}<text x="754" y="242">More</text></g>`;
+  const activity = `<svg xmlns="http://www.w3.org/2000/svg" width="860" height="268" viewBox="0 0 860 268" role="img" aria-labelledby="title desc"><title id="title">GitHub contribution activity for ${owner}</title><desc id="desc">${contributions} contributions in the last year. Source: GitHub, refreshed ${updated} UTC.</desc><rect x="1" y="1" width="858" height="266" rx="16" fill="${c.bg}" stroke="${c.line}"/><text x="30" y="36" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="${c.text}">Contribution activity</text><text x="830" y="36" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="${c.muted}">Updated ${updated} UTC</text><text x="30" y="60" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="${c.muted}">${contributions.toLocaleString('en-US')} contributions in the last year · from your public GitHub profile</text><g font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="${c.muted}">${monthLabels}</g>${cellsSvg}<path d="M30 218H830" stroke="${c.line}"/><text x="30" y="242" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="${c.muted}">Each square represents one day</text>${legend}</svg>`;
   await save(`activity-${theme}`, activity);
 
   const metrics = [
-    { label: 'PUBLIC REPOSITORIES', value: account.public_repos, color: c.cyan },
-    { label: 'ORIGINAL REPOSITORIES', value: owned.length, color: c.purple },
-    { label: 'STARS EARNED', value: stars, color: c.orange },
-    { label: 'GITHUB MEMBER SINCE', value: new Date(account.created_at).getUTCFullYear(), color: c.cyan },
+    { label: 'Public repositories', value: account.public_repos, color: c.cyan },
+    { label: 'Non-fork repositories', value: owned.length, color: c.purple },
+    { label: 'Stars earned', value: stars, color: c.orange },
+    { label: 'Member since', value: new Date(account.created_at).getUTCFullYear(), color: c.cyan },
   ];
-  const metricSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="860" height="150" viewBox="0 0 860 150" role="img" aria-labelledby="title desc"><title id="title">${owner} GitHub account statistics</title><desc id="desc">${account.public_repos} public repositories, ${owned.length} non-fork repositories, ${stars} stars and GitHub account created ${new Date(account.created_at).getUTCFullYear()}. Refreshed ${updated} UTC from the GitHub API.</desc><rect x="1" y="1" width="858" height="148" rx="16" fill="${c.bg}" stroke="${c.line}"/><text x="24" y="28" font-family="Consolas,monospace" font-size="10" letter-spacing="1.5" fill="${c.muted}">ACCOUNT SNAPSHOT / VERIFIED VIA GITHUB API / ${updated} UTC</text>${metrics.map((m, i) => { const x = 22 + i * 210; return `<rect x="${x}" y="44" width="198" height="84" rx="12" fill="${c.panel}" stroke="${c.line}"/><rect x="${x}" y="44" width="3" height="84" rx="1.5" fill="${m.color}"/><text x="${x + 17}" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="25" font-weight="700" fill="${m.color}">${esc(m.value)}</text><text x="${x + 17}" y="104" font-family="Consolas,monospace" font-size="9" letter-spacing=".4" fill="${c.muted}">${esc(m.label)}</text>`; }).join('')}</svg>`;
+  const metricSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="860" height="190" viewBox="0 0 860 190" role="img" aria-labelledby="title desc"><title id="title">${owner} GitHub account statistics</title><desc id="desc">${account.public_repos} public repositories, ${owned.length} non-fork repositories, ${stars} stars and GitHub account created ${new Date(account.created_at).getUTCFullYear()}. Refreshed ${updated} UTC from the GitHub API.</desc><rect x="1" y="1" width="858" height="188" rx="16" fill="${c.bg}" stroke="${c.line}"/><text x="30" y="36" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="${c.text}">Account overview</text><text x="830" y="36" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="${c.muted}">Updated ${updated} UTC</text><text x="30" y="60" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="${c.muted}">Public repositories, earned stars and account history</text>${metrics.map((m, i) => { const x = 22 + i * 210; return `<rect x="${x}" y="82" width="198" height="84" rx="12" fill="${c.panel}" stroke="${c.line}"/><rect x="${x}" y="82" width="3" height="84" rx="1.5" fill="${m.color}"/><text x="${x + 17}" y="119" font-family="Segoe UI,Arial,sans-serif" font-size="29" font-weight="700" fill="${m.color}">${esc(m.value)}</text><text x="${x + 17}" y="146" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="${c.muted}">${esc(m.label)}</text>`; }).join('')}</svg>`;
   await save(`stats-${theme}`, metricSvg);
 
   const bars = languages.map(([language, count], i) => {
-    const x = 24 + (i % 4) * 210;
-    const y = 57 + Math.floor(i / 4) * 49;
-    const accent = [c.cyan, c.purple, c.orange, c.cyan][i % 4];
-    return `<circle cx="${x + 4}" cy="${y + 4}" r="4" fill="${accent}"/><text x="${x + 16}" y="${y + 8}" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="${c.text}">${esc(language)}</text><rect x="${x}" y="${y + 18}" width="174" height="5" rx="2.5" fill="${c.line}"/><rect x="${x}" y="${y + 18}" width="${Math.max(7, Math.round(174 * count / Math.max(...languages.map(([, n]) => n))))}" height="5" rx="2.5" fill="${accent}"/><text x="${x + 190}" y="${y + 23}" text-anchor="end" font-family="Consolas,monospace" font-size="10" fill="${c.muted}">${count} repo${count === 1 ? '' : 's'}</text>`;
+    const x = 32 + (i % 2) * 410;
+    const y = 88 + Math.floor(i / 2) * 76;
+    const style = languageStyles[language];
+    const accent = style?.color ?? c.muted;
+    const icon = style
+      ? `<svg x="${x}" y="${y}" width="24" height="24" viewBox="${style.viewBox}">${style.art}</svg>`
+      : `<g transform="translate(${x},${y})" fill="none" stroke="${c.muted}" stroke-width="1.6"><path d="M6 2h8l5 5v15H6Z"/><path d="M14 2v6h5M9 12h7M9 16h7"/></g>`;
+    return `${icon}<text x="${x + 36}" y="${y + 17}" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="600" fill="${c.text}">${esc(language)}</text><text x="${x + 364}" y="${y + 17}" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="${c.muted}">${count} repositor${count === 1 ? 'y' : 'ies'}</text><rect x="${x + 36}" y="${y + 37}" width="328" height="7" rx="3.5" fill="${c.line}"/><rect x="${x + 36}" y="${y + 37}" width="${Math.max(8, Math.round(328 * count / Math.max(...languages.map(([, n]) => n))))}" height="7" rx="3.5" fill="${accent}"/>`;
   }).join('');
-  const languageSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="860" height="166" viewBox="0 0 860 166" role="img" aria-labelledby="title desc"><title id="title">Primary languages across original public repositories</title><desc id="desc">Counts GitHub's primary language field for ${owned.length} non-fork public repositories; refreshed ${updated} UTC.</desc><rect x="1" y="1" width="858" height="164" rx="16" fill="${c.bg}" stroke="${c.line}"/><text x="24" y="29" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="${c.text}">Repository language mix</text><text x="830" y="29" text-anchor="end" font-family="Consolas,monospace" font-size="10" fill="${c.muted}">PRIMARY LANGUAGE · ${owned.length} ORIGINAL REPOS · ${updated} UTC</text>${bars}</svg>`;
+  const languageHeight = 110 + Math.ceil(languages.length / 2) * 76;
+  const languageSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="860" height="${languageHeight}" viewBox="0 0 860 ${languageHeight}" role="img" aria-labelledby="title desc"><title id="title">Primary languages across original public repositories</title><desc id="desc">Counts GitHub's primary language field for ${owned.length} non-fork public repositories; refreshed ${updated} UTC.</desc><rect x="1" y="1" width="858" height="${languageHeight - 2}" rx="16" fill="${c.bg}" stroke="${c.line}"/><text x="32" y="35" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="${c.text}">Repository language mix</text><text x="828" y="35" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="${c.muted}">Updated ${updated} UTC</text><text x="32" y="59" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="${c.muted}">Primary language of each public repository · ${owned.length} projects, excluding forks</text>${bars}</svg>`;
   await save(`languages-${theme}`, languageSvg);
 }
 

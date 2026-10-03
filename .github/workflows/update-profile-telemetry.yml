@@ -9,6 +9,7 @@ on:
     paths:
       - '.github/workflows/update-profile-telemetry.yml'
       - 'tools/update-github-telemetry.mjs'
+      - 'assets/language-icons/**'
 
 permissions:
   contents: write
