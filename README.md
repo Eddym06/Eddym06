@@ -133,12 +133,24 @@ A few things I've been turning from ideas into code. **Click a card to explore.*
 ## 📡 GitHub telemetry
 
 <div align="center">
-  <a href="https://github.com/Eddym06?tab=overview">
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Eddym06&amp;theme=tokyonight" width="100%" alt="Live GitHub contribution history for Eddym06" />
-  </a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/github-activity-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/github-activity-light.svg" />
+    <img src="./assets/github-activity-dark.svg" width="100%" alt="GitHub contribution activity during the last year. Updated daily from Eddy's public profile." />
+  </picture>
   <br />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Eddym06&amp;theme=tokyonight" width="48%" alt="GitHub statistics for Eddym06" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Eddym06&amp;theme=tokyonight" width="48%" alt="Languages by commits for Eddym06" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/github-stats-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/github-stats-light.svg" />
+    <img src="./assets/github-stats-dark.svg" width="48%" alt="Current public repository, original project, star and account age totals." />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/github-languages-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/github-languages-light.svg" />
+    <img src="./assets/github-languages-dark.svg" width="48%" alt="Primary languages across public, non-fork repositories." />
+  </picture>
+  <br />
+  <sub>Public GitHub profile and repository data · refreshed daily by GitHub Actions · contribution activity reflects what GitHub shows publicly</sub>
 </div>
 
 <br />
@@ -157,4 +169,4 @@ A few things I've been turning from ideas into code. **Click a card to explore.*
   <sub>Made of curiosity, code and a little Caribbean energy. 🇩🇴 · 2026</sub>
 </div>
 
-<!-- Artwork: tools/generate-art.mjs and tools/generate-ascii-portrait.py. External widgets: readme-typing-svg, skill-icons, github-profile-summary-cards and Shields.io. -->
+<!-- Artwork: tools/generate-art.mjs, tools/generate-ascii-portrait.py and tools/update-github-telemetry.mjs. External artwork: readme-typing-svg, skill-icons and Shields.io. -->
